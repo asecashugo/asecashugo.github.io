@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World with Lenis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .section1 { background-color: #f4f4f4; }
+    .section2 { background-color: #e2e2e2; }
+  </style>
+</head>
+<body>
+  <section class="section1">
+    <h1>Hello World</h1>
+  </section>
+  <section class="section2">
+    <h1>Scroll Down Smoothly</h1>
+  </section>
+
+  <!-- Include Lenis Library -->
+  <script src="https://unpkg.com/@studio-freight/lenis@latest/bundled/lenis.js"></script>
+  <script>
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  </script>
+</body>
+</html>

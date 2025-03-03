@@ -3,54 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Gallery with Smooth Scrolling</title>
+  <title>Industrial Coatings</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
     }
-    .gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
+    header {
+      background: #000;
+      color: #fff;
       padding: 20px;
+      text-align: center;
     }
-    .gallery img {
-      max-width: 80%;
+    .hero {
+      background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .section p {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .industry {
+      background: #f4f4f4;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+    }
+    .industry img {
+      width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
+    .industry h3 {
+      margin-top: 15px;
+    }
+    footer {
+      background: #000;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="gallery">
-    <img src="images/sofa.jpg" alt="Description 1">
-    <img src="images/terraza.jpg" alt="Description 2">
-    <img src="images/cargador.jpg" alt="Description 3">
+  <header>
+    <h1>Hugo</h1>
+  </header>
+
+  <div class="hero">
+    <h1>Cosas grandilocuentes</h1>
   </div>
 
-  <!-- Include Lenis Library -->
-  <script src="https://unpkg.com/@studio-freight/lenis@latest/bundled/lenis.js"></script>
-  <script>
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      smoothTouch: true,
-    });
+  <section class="section">
+    <h2>Qué tío</h2>
+    <p>Fua, aún más cosas flipantes</p>
+  </section>
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+  <section class="section">
+    <h2>Ha hecho de todo</h2>
+    <div class="industries">
+    <div class="industry">
+      <a href="trabajos.html">
+        <img src="https://via.placeholder.com/300x200" alt="Trabajos">
+        <h3>Trabajos</h3>
+      </a>
+      <p>bla</p>
+    </div>
+      <div class="industry">
+        <img src="https://via.placeholder.com/300x200" alt="code">
+        <h3>code</h3>
+        <p>blabala</p>
+      </div>
+      <div class="industry">
+        <img src="https://via.placeholder.com/300x200" alt="more">
+        <h3>more</h3>
+        <p>Beeeeh</p>
+      </div>
+    </div>
+  </section>
 
-    requestAnimationFrame(raf);
-  </script>
+  <footer>
+    <p><a href="https://github.com/asecashugo" target="_blank" style="color: #fff;">GitHub</a></p>
+  </footer>
 </body>
 </html>

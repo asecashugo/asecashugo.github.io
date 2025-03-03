@@ -17,6 +17,10 @@
       padding: 20px;
       text-align: center;
     }
+    .header h1 {
+      font-size: 2.5em; /* Larger text */
+      margin: 0;
+    }
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -31,6 +35,9 @@
       text-align: center;
       border-radius: 8px;
       overflow: hidden;
+      opacity: 0; /* Start hidden for fade-in effect */
+      transform: translateY(20px); /* Slightly move down */
+      transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
     }
     .industry img {
       width: 100%;
@@ -41,10 +48,16 @@
       background-color: #333;
       color: #fff;
       margin: 0;
+      font-size: 1.5em; /* Larger subheading */
     }
     .industry p {
       padding: 15px;
       color: #333;
+    }
+    /* Fade-in effect when in view */
+    .industry.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -54,20 +67,50 @@
   </div>
   <div class="container">
     <div class="industry">
-      <img src="images/sofa.jpg" alt="Urban and Commercial Transport">
+      <img src="images/sofa.jpg" alt="Wood">
       <h3>Wood</h3>
       <p>Chips get in your eyes</p>
     </div>
     <div class="industry">
-      <img src="images/terraza.jpg" alt="Arte">
+      <img src="images/terraza.jpg" alt="Art">
       <h3>Art</h3>
       <p>Suck at everything with a smile</p>
     </div>
     <div class="industry">
-      <img src="images/cargador.jpg" alt="Agricultural Equipment">
+      <img src="images/cargador.jpg" alt="Tinkering">
       <h3>Tinkering</h3>
       <p>Why hasn't someone done this before?</p>
     </div>
   </div>
+
+  <!-- JavaScript for fade-in effect -->
+  <script>
+    // Function to check if an element is in the viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+
+    // Function to add 'show' class to elements in viewport
+    function showElementsInViewport() {
+      const industries = document.querySelectorAll('.industry');
+      industries.forEach(industry => {
+        if (isInViewport(industry)) {
+          industry.classList.add('show');
+        }
+      });
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', showElementsInViewport);
+
+    // Initial check
+    showElementsInViewport();
+  </script>
 </body>
 </html>
